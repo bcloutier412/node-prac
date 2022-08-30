@@ -1,18 +1,29 @@
-const http = require('http')
+const { readFile, writeFile } = require('fs')
 
-const server = http.createServer((req, res) => {
-    if (req.url === '/hello') {
-        console.log('connecting')
-        res.write('hello world')
-        res.end();
+// readFile('./content/first.txt','utf8', (err, result) => {
+//     if(err) {
+//         console.log(err)
+//         return null
+//     }
+//     const first = result
+//     readFile('./content/second.txt', 'utf8', (err, result) => {
+//         if (err) {
+//             console.log(err)
+//             return null
+//         }
+//         const second = result
+//         writeFile('./content/result.txt', `${first}, ${second}`, (err, result) => {
+//             if (err) {
+//                 console.log(err)
+//                 return null
+//             }
+//             console.log(result)
+//         })
+//     })
+// })
+readFile('./content/first.txt', 'utf8', (err, result) => {
+    if (err) {
+        console.log(err)
+        return null
     }
-    if (req.url === '/iwantstuff') {
-        res.write(JSON.stringify(['beans', 'meat', 'chicken']))
-        res.end();
-    }
-
-});
-
-server.listen(3003);
-
-console.log('listening on port 3003');
+})
